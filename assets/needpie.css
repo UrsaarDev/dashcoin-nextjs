@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+                    :root {
+                      font-size: 16px;
+                    }
+                    
+                    .preloader {
+                      width: 100%;
+                      height: 100vh;
+                      position: absolute;
+                      top: 0;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      z-index: 9;
+                      opacity: 1;
+                      background-color: #8d8d8d;
+                      overflow: hidden;
+                      transition: all 0.5s ease-in;
+                    }
+                    .preloader.loaded {
+                      opacity: 0;
+                      z-index: -1;
+                      transition: all 0.45s ease-in;
+                    }
+                    .preloader.loaded .sideL {
+                      clip-path: circle(100% at 100% 50%);
+                      transition: all 0.5s ease;
+                    }
+                    .preloader.loaded .sideR {
+                      clip-path: circle(100% at 0% 50%);
+                      transition: all 0.5s ease;
+                    }
+                    .preloader .sideL {
+                      background-color: #ddd;
+                      height: 100vh;
+                      width: 50%;
+                      float: left;
+                      display: inline;
+                      clip-path: circle(0% at 100% 50%);
+                      transition: all 0.5s ease-in;
+                    }
+                    .preloader .sideR {
+                      background-color: #ddd;
+                      height: 100vh;
+                      width: 50%;
+                      float: right;
+                      display: inline;
+                      clip-path: circle(0% at 0% 50%);
+                    }
+                    
+                    section .menu {
+                      padding: 0;
+                      list-style: none;
+                      position: relative;
+                      margin: 30px auto;
+                      width:367px;
+                      height:367px;
+                      padding-top: 70%;
+                      transform: scale(0.1) rotate(180deg);
+                      pointer-events: none;
+                      opacity: 0;
+                      overflow: hidden;
+                    }
+                    section .menu.active {
+                      width:367px;
+                      height:367px;
+                      transform: scale(1) rotate(0deg);
+                      opacity: 1;
+                      pointer-events: all;
+                      transition: transform 0.25s ease-out, opacity 0.25s ease-in !important;
+                    }
+                    section .menu li {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      clip-path: url(#sector);
+                      /* try this one in Chrome/Opera/Safari */
+                    }
+                    section .menu li a {
+                      display: block;
+                      width: 100%;
+                      height: 100%;
+                    }
+                    section .menu li:hover a .icon, section .menu li:focus a .icon {
+                      font-size: 28px;
+                    }
+                    @media all and (max-width: 700px) {
+                      section .menu {
+                        width: 300px;
+                        height: 300px;
+                        padding: 0;
+                      }
+                      section .closeBtn {
+                        transform: translate(-30px, -40px) !important;
+                        height: 60px !important;
+                        width: 60px !important;
+                      }
+                      section .centerBtn {
+                        height: 80px !important;
+                        width: 80px !important;
+                        transform: translate(-40px, -50px) !important;
+                      }
+                      section .centerBtn.active {
+                        transform: translate(-40px, -50px) rotate(45deg) !important;
+                      }
+                      section .menuContainer.active {
+                        top: 95% !important;
+                      }
+                    }
+                    @media all and (min-width: 700px) {
+                      section .menu {
+                        width: 500px;
+                        height: 500px;
+                        padding: 0;
+                      }
+                    }
+                    
+                    @keyframes circle {
+                      from {
+                        -webkit-clip-path: circle(0%);
+                        clip-path: circle(0%);
+                      }
+                      to {
+                        -webkit-clip-path: circle(120px);
+                        clip-path: circle(120px);
+                      }
+                    }

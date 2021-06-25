@@ -1,0 +1,78 @@
+$isover : url('/slides/img100.jpg');
+
+html {
+    height: 100%;
+}
+body {
+    margin:0;
+    min-height: 100%;
+}
+#__next {
+    position: absolute;
+    padding:5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.imgViewer {
+    position:absolute;
+    width:600px;
+    height:367px;
+    top:0%;
+    left:50%;
+    
+    border:2px solid white;
+    overflow: hidden;
+    z-index:100;
+    transition: .5s;
+}
+.curImage {
+    background-image: $isover;
+    background-size:100% 100%;
+    text-align: center;
+    height:100%;
+}
+.curImage.scaleIn {
+    transition: 5s;
+    filter:sepia(1);
+    transform: scale(1.3);
+}
+.imgViewer.fadeOut {
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    opacity:0;
+    width:0;
+    height:0;
+    top:50%;
+}
+.imgViewer.fadeIn {
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: 1s;
+    -o-transition: .5s;
+    transition: .5s;
+    opacity:1;
+    width:600px;
+    height:367px;
+    top:0%;
+}
+.imgTitle {
+    position:absolute;
+    text-align:center;
+    color:red;
+    font-size:30px;
+    width:100%;
+    margin-top:20%;
+}
+.imgDescription {
+    position:absolute;
+    text-align:center;
+    color:red;
+    margin-top:40%;
+    width:100%;
+}
