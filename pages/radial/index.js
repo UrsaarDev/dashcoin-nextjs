@@ -1,8 +1,10 @@
-import React , { Component } from 'react';
+import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { Paper } from "@material-ui/core";
 
 const Pie = (props) => {
+
+    //initialise
     const { count } = props;
     const menu = useRef(null);
     const curImage = useRef(null);
@@ -13,6 +15,7 @@ const Pie = (props) => {
     const [arr, setArray] = useState([0,1,2]);
     const [backs, setBacks] = useState(['/slides/img100.jpg','/slides/img101.jpg','/slides/img102.jpg','/slides/img103.jpg','/slides/img104.jpg']);
 
+    //componentdidmount
     useEffect(() => {
         var tmp = [];
         for(let i=0;i<count;i++) tmp.push(i);
@@ -27,6 +30,7 @@ const Pie = (props) => {
         }
     }, []);
 
+    //event when you enter image
     function hovered (i) {
         curImage.current.style.backgroundImage = `url(${backs[i%5]})`;
         imgViewer.current.classList.remove('fadeOut');
@@ -34,8 +38,11 @@ const Pie = (props) => {
         title.current.innerHTML = "This is Image "+(1+i);
         description.current.innerHTML = "Description "+(1+i);
     }
+
+    //event when you leave image
     function hleave (when, e) {
-        if((when === 1 && (e.relatedTarget && e.relatedTarget.classList.value.search("curImage") === -1 && e.relatedTarget.classList.value.search("imgViewer") === -1)) || (when === 2)) {
+        if((when === 1 && (e.relatedTarget && e.relatedTarget.classList.value.search("curImage") === -1 && e.relatedTarget.classList.value.search("imgViewer") === -1)) 
+            || (when === 2)) {
             if(curImage.current !== null) {
                 imgViewer.current.classList.remove('fadeIn');
                 imgViewer.current.classList.add('fadeOut');
@@ -43,22 +50,38 @@ const Pie = (props) => {
             }
         }
     }
+
+    //draws with maths funcs
     function drawPieLine(i) {
         const endx = Math.cos((360/i-90)*Math.PI/180)*0.5+0.5;
         const endy = Math.sin((360/i-90)*Math.PI/180)*0.5+0.5;
         return "M0.5,0.5 L0.5,0 A0.5,0.5 0 0 1 "+endx+' '+endy+" z";
     }
+
+    //event when you enter big image
     function doScaleImage () {
         if(curImage.current !== null) curImage.current.classList.add('scaleIn');
     }
+
+    //render
     return  <div>
-                <section style={{position:'relative'}}>
-                    <div className="menuContainer">
-                        <ul className="menu" ref={menu}>
+                <section>
+                    <div className="circlemenu_container">
+                        <ul className="circlemenu_ul" ref={menu}>
                             {arr.map((each,i) =>
-                                <li key={i} ord={i} style={{transform: "rotate(-"+(360/arr.length)*i+"deg)"}} onMouseEnter={() => hovered(i)} onMouseOut={(e) => hleave(1,e)}>
-                                    <img className='piece_img' src={backs[i%5]} style={{transform:"rotate("+(360/arr.length)*i+"deg)",width:400,height:400,position:'absolute'}} />
-                                        <span style={{position: 'absolute',right:(count>6)? 25+count/2+"%" : 25+"%",top:100/count+"%",transform:"rotate("+180/count+"deg)",color:"white",fontFamily:"Indie Flower",fontSize: 26,userSelect:"none",pointerEvents:"none"}}>img-{i+1}</span>
+                                <li key={i} 
+                                    style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" }}
+                                    onMouseEnter={() => hovered(i)}
+                                    onMouseOut={(e) => hleave(1,e)}
+                                >
+                                    <img className='circlemenu_piece_img' 
+                                        style={{ transform : "rotate(" + (360/arr.length) * i + "deg)" }} 
+                                        src={backs[i%5]}
+                                    />
+                                    <span className='circlemenu_piespan'
+                                        style={{ right : (count>6) ? 25 + count/2 + "%" : 25 + "%" , top:100/count+"%",transform:"rotate("+180/count + "deg)"}}>
+                                        img-{i+1}
+                                    </span>
                                 </li>
                             )}
                         </ul>
@@ -66,15 +89,22 @@ const Pie = (props) => {
                         <svg height="0" width="0">
                             <defs>
                                 <clipPath clipPathUnits="objectBoundingBox" id="sector">
-                                    <path fill="none" stroke="#111" className="sector" d={drawPieLine(count)}></path>
+                                    <path fill="none" stroke="#111" d={drawPieLine(count)}></path>
                                 </clipPath>
                             </defs>
                         </svg>
                     </div>
-                    <Paper elevation={3} ref={imgViewer} className="imgViewer fadeOut" onMouseLeave={(e) => hleave(2,e)}>
-                        <div className="curImage" ref={curImage} onMouseEnter={() => doScaleImage()}>
-                            <div className="imgTitle" ref={title}></div>
-                            <div className="imgDescription" ref={description}></div>
+                    <Paper className="circlemenu_imgViewer fadeOut" 
+                        elevation={3} 
+                        ref={imgViewer}
+                        onMouseLeave={(e) => hleave(2,e)}
+                    >
+                        <div className="circlemenu_curImage"
+                            ref={curImage}
+                            onMouseEnter={() => doScaleImage()}
+                        >
+                            <div className="circlemenu_imgTitle" ref={title}></div>
+                            <div className="circlemenu_imgDescription" ref={description}></div>
                         </div>
                     </Paper>
                 </section>

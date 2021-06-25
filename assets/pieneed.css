@@ -1,0 +1,203 @@
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+  :root {
+    font-size: 16px;
+  }
+  
+  .preloader {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    opacity: 1;
+    background-color: #8d8d8d;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+  }
+  .preloader.loaded {
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.45s ease-in;
+  }
+  .preloader.loaded .sideL {
+    clip-path: circle(100% at 100% 50%);
+    transition: all 0.5s ease;
+  }
+  .preloader.loaded .sideR {
+    clip-path: circle(100% at 0% 50%);
+    transition: all 0.5s ease;
+  }
+  .preloader .sideL {
+    background-color: #ddd;
+    height: 100vh;
+    width: 50%;
+    float: left;
+    display: inline;
+    clip-path: circle(0% at 100% 50%);
+    transition: all 0.5s ease-in;
+  }
+  .preloader .sideR {
+    background-color: #ddd;
+    height: 100vh;
+    width: 50%;
+    float: right;
+    display: inline;
+    clip-path: circle(0% at 0% 50%);
+  }
+  section {
+    position:relative;
+  }
+  section .circlemenu_ul {
+    padding: 0;
+    list-style: none;
+    position: relative;
+    margin: 30px auto;
+    width:367px;
+    height:367px;
+    padding-top: 70%;
+    transform: scale(0.1) rotate(180deg);
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden;
+  }
+  section .circlemenu_ul.active {
+    width:367px;
+    height:367px;
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    pointer-events: all;
+    transition: transform 0.25s ease-out, opacity 0.25s ease-in !important;
+  }
+  section .circlemenu_ul li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: url(#sector);
+    /* try this one in Chrome/Opera/Safari */
+  }
+  section .circlemenu_ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  section .circlemenu_ul li:hover a .icon, section .circlemenu_ul li:focus a .icon {
+    font-size: 28px;
+  }
+  @media all and (max-width: 700px) {
+    section .circlemenu_ul {
+      width: 300px;
+      height: 300px;
+      padding: 0;
+    }
+    section .closeBtn {
+      transform: translate(-30px, -40px) !important;
+      height: 60px !important;
+      width: 60px !important;
+    }
+    section .centerBtn {
+      height: 80px !important;
+      width: 80px !important;
+      transform: translate(-40px, -50px) !important;
+    }
+    section .centerBtn.active {
+      transform: translate(-40px, -50px) rotate(45deg) !important;
+    }
+    section .circlemenu_container.active {
+      top: 95% !important;
+    }
+  }
+  @media all and (min-width: 700px) {
+    section .circlemenu_ul {
+      width: 500px;
+      height: 500px;
+      padding: 0;
+    }
+  }
+  
+  @keyframes circle {
+    from {
+      -webkit-clip-path: circle(0%);
+      clip-path: circle(0%);
+    }
+    to {
+      -webkit-clip-path: circle(120px);
+      clip-path: circle(120px);
+    }
+  }
+.circlemenu_imgViewer {
+  position:absolute;
+  width:600px;
+  height:367px;
+  top:0%;
+  left:50%;
+  
+  border:2px solid white;
+  overflow: hidden;
+  z-index:100;
+  transition: .5s;
+}
+.circlemenu_curImage {
+  background-size:100% 100%;
+  text-align: center;
+  height:100%;
+}
+.circlemenu_curImage.scaleIn {
+  transition: 5s;
+  filter:sepia(1);
+  transform: scale(1.3);
+}
+.circlemenu_imgViewer.fadeOut {
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  opacity:0;
+  width:0;
+  height:0;
+  top:50%;
+}
+.circlemenu_imgViewer.fadeIn {
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: 1s;
+  -o-transition: .5s;
+  transition: .5s;
+  opacity:1;
+  width:600px;
+  height:367px;
+  top:0%;
+}
+.circlemenu_imgTitle {
+  position:absolute;
+  text-align:center;
+  color:red;
+  font-size:30px;
+  width:100%;
+  margin-top:20%;
+}
+.circlemenu_imgDescription {
+  position:absolute;
+  text-align:center;
+  color:red;
+  margin-top:40%;
+  width:100%;
+}
+.circlemenu_piespan {
+  position: absolute;
+  color:white;
+  font-family:Indie Flower;
+  font-size: 26px;
+  user-select:none;
+  pointer-events: none;
+}
+.circlemenu_piece_img {
+  width:400px;
+  height:400px;
+  position:absolute;
+}
