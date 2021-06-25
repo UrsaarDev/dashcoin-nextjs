@@ -9,7 +9,7 @@ class Pie extends Component {
                     <Grid container item xs={12}>
                         <Grid container item xs={4}>
                             <React.Fragment>
-                                <RadialMenu count={5}/>
+                                <RadialMenu count={3}/>
                             </React.Fragment>
                         </Grid>
                         <Grid container item xs={4}>
@@ -26,7 +26,24 @@ class Pie extends Component {
                     <Grid container item xs={12}>
                         <Grid container item xs={4}>
                             <React.Fragment>
+                                <RadialMenu count={3}/>
+                            </React.Fragment>
+                        </Grid>
+                        <Grid container item xs={4}>
+                            <React.Fragment>
                                 <RadialMenu count={5}/>
+                            </React.Fragment>
+                        </Grid>
+                        <Grid container item xs={4}>
+                            <React.Fragment>
+                                <RadialMenu count={5}/>
+                            </React.Fragment>
+                        </Grid>
+                    </Grid>
+                    <Grid container item xs={12}>
+                        <Grid container item xs={4}>
+                            <React.Fragment>
+                                <RadialMenu count={3}/>
                             </React.Fragment>
                         </Grid>
                         <Grid container item xs={4}>

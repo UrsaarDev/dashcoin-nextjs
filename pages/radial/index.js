@@ -1,9 +1,9 @@
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { Paper } from "@material-ui/core";
+import PiePaths from '/components/piepath';
 
 const Pie = (props) => {
-
     //initialise
     const { count } = props;
     const menu = useRef(null);
@@ -12,22 +12,19 @@ const Pie = (props) => {
     const title = useRef(null);
     const description = useRef(null);
     
-    const [arr, setArray] = useState([0,1,2]);
+    const [arr, setArray] = useState([]);
     const [backs, setBacks] = useState(['/slides/img100.jpg','/slides/img101.jpg','/slides/img102.jpg','/slides/img103.jpg','/slides/img104.jpg']);
 
     //componentdidmount
     useEffect(() => {
-        var tmp = [];
+        let tmp = [];
         for(let i=0;i<count;i++) tmp.push(i);
 
-        setArray([...tmp]);
+        setArray(tmp);
         setTimeout(() => {
             menu.current.classList.toggle("active");
             menu.current.style.transition = "transform .25s ease-out, opacity .25s ease-in";
         }, 1000);
-
-        return () => {
-        }
     }, []);
 
     //event when you enter image
@@ -51,18 +48,11 @@ const Pie = (props) => {
         }
     }
 
-    //draws with maths funcs
-    function drawPieLine(i) {
-        const endx = Math.cos((360/i-90)*Math.PI/180)*0.5+0.5;
-        const endy = Math.sin((360/i-90)*Math.PI/180)*0.5+0.5;
-        return "M0.5,0.5 L0.5,0 A0.5,0.5 0 0 1 "+endx+' '+endy+" z";
-    }
-
     //event when you enter big image
     function doScaleImage () {
         if(curImage.current !== null) curImage.current.classList.add('scaleIn');
     }
-
+    
     //render
     return  <div>
                 <section>
@@ -70,7 +60,7 @@ const Pie = (props) => {
                         <ul className="circlemenu_ul" ref={menu}>
                             {arr.map((each,i) =>
                                 <li key={i} 
-                                    style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" }}
+                                    style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" , clipPath: "url(#sector"+count+")"}}
                                     onMouseEnter={() => hovered(i)}
                                     onMouseOut={(e) => hleave(1,e)}
                                 >
@@ -85,14 +75,7 @@ const Pie = (props) => {
                                 </li>
                             )}
                         </ul>
-
-                        <svg height="0" width="0">
-                            <defs>
-                                <clipPath clipPathUnits="objectBoundingBox" id="sector">
-                                    <path fill="none" stroke="#111" d={drawPieLine(count)}></path>
-                                </clipPath>
-                            </defs>
-                        </svg>
+                        <PiePaths count={count} />
                     </div>
                     <Paper className="circlemenu_imgViewer fadeOut" 
                         elevation={3} 
