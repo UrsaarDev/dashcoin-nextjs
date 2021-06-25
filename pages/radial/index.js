@@ -35,7 +35,7 @@ const Pie = (props) => {
         description.current.innerHTML = "Description "+(1+i);
     }
     function hleave (when, e) {
-        if((when === 1 && (e.relatedTarget.classList && e.relatedTarget.classList.value.search("curImage") === -1 && e.relatedTarget.classList.value.search("imgViewer") === -1)) || (when === 2) || (when === 3)) {
+        if((when === 1 && (e.relatedTarget && e.relatedTarget.classList.value.search("curImage") === -1 && e.relatedTarget.classList.value.search("imgViewer") === -1)) || (when === 2)) {
             if(curImage.current !== null) {
                 imgViewer.current.classList.remove('fadeIn');
                 imgViewer.current.classList.add('fadeOut');
@@ -58,7 +58,7 @@ const Pie = (props) => {
                             {arr.map((each,i) =>
                                 <li key={i} ord={i} style={{transform: "rotate(-"+(360/arr.length)*i+"deg)"}} onMouseEnter={() => hovered(i)} onMouseOut={(e) => hleave(1,e)}>
                                     <img className='piece_img' src={backs[i%5]} style={{transform:"rotate("+(360/arr.length)*i+"deg)",width:400,height:400,position:'absolute'}} />
-                                        <span onMouseOut={(e) => hleave(3,e)} style={{position: 'absolute',right:(count>6)? 25+count/2+"%" : 25+"%",top:100/count+"%",transform:"rotate("+180/count+"deg)",color:"white",fontFamily:"Indie Flower",fontSize: 26,userSelect:"none",pointerEvents:"none"}}>img-{i+1}</span>
+                                        <span style={{position: 'absolute',right:(count>6)? 25+count/2+"%" : 25+"%",top:100/count+"%",transform:"rotate("+180/count+"deg)",color:"white",fontFamily:"Indie Flower",fontSize: 26,userSelect:"none",pointerEvents:"none"}}>img-{i+1}</span>
                                 </li>
                             )}
                         </ul>
