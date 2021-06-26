@@ -5,7 +5,7 @@ import PiePaths from '/components/piepath';
 
 const Pie = (props) => {
     //initialise
-    const { count } = props;
+    const { count, direction } = props;
     const menu = useRef(null);
     const curImage = useRef(null);
     const imgViewer = useRef(null);
@@ -30,8 +30,8 @@ const Pie = (props) => {
     //event when you enter image
     function hovered (i) {
         curImage.current.style.backgroundImage = `url(${backs[i%5]})`;
-        imgViewer.current.classList.remove('fadeOut');
-        imgViewer.current.classList.add('fadeIn');
+        imgViewer.current.classList.remove('fadeOut' + direction);
+        imgViewer.current.classList.add('fadeIn' + direction);
         title.current.innerHTML = "This is Image "+(1+i);
         description.current.innerHTML = "Description "+(1+i);
     }
@@ -41,18 +41,12 @@ const Pie = (props) => {
         if((when === 1 && (e.relatedTarget && e.relatedTarget.classList.value.search("curImage") === -1 && e.relatedTarget.classList.value.search("imgViewer") === -1)) 
             || (when === 2)) {
             if(curImage.current !== null) {
-                imgViewer.current.classList.remove('fadeIn');
-                imgViewer.current.classList.add('fadeOut');
-                curImage.current.classList.remove('scaleIn');
+                imgViewer.current.classList.remove('fadeIn' + direction);
+                imgViewer.current.classList.add('fadeOut' + direction);
             }
         }
     }
 
-    //event when you enter big image
-    function doScaleImage () {
-        if(curImage.current !== null) curImage.current.classList.add('scaleIn');
-    }
-    
     //render
     return  <div>
                 <section>
@@ -68,23 +62,22 @@ const Pie = (props) => {
                                         style={{ transform : "rotate(" + (360/arr.length) * i + "deg)" }} 
                                         src={backs[i%5]}
                                     />
-                                    <span className='circlemenu_piespan'
+                                    {/* <span className='circlemenu_piespan'
                                         style={{ right : (count>6) ? 25 + count/2 + "%" : 25 + "%" , top:100/count+"%",transform:"rotate("+180/count + "deg)"}}>
                                         img-{i+1}
-                                    </span>
+                                    </span> */}
                                 </li>
                             )}
                         </ul>
                         <PiePaths count={count} />
                     </div>
-                    <Paper className="circlemenu_imgViewer fadeOut" 
+                    <Paper className={"circlemenu_imgViewer fadeOut"+direction} 
                         elevation={3} 
                         ref={imgViewer}
                         onMouseLeave={(e) => hleave(2,e)}
                     >
                         <div className="circlemenu_curImage"
                             ref={curImage}
-                            onMouseEnter={() => doScaleImage()}
                         >
                             <div className="circlemenu_imgTitle" ref={title}></div>
                             <div className="circlemenu_imgDescription" ref={description}></div>
