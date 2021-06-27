@@ -60,11 +60,11 @@ const Pie = (props) => {
                     <div className="circlemenu_container">
                         <ul className="circlemenu_ul" ref={menu}>
                             <div>
-                                <div className="circlemenu_outlines"></div>
                                 {arr.map((each,i) =>
-                                    <div className="circlemenu_borders" style={{height:181,transform:"rotate("+((360/arr.length)*i-180)+"deg)"}}></div>
-                                )}
+                                    <div className="circlemenu_borders" style={{height:184,transform:"rotate("+((360/arr.length)*i-180)+"deg)"}}></div>
+                                    )}
                             </div>
+                            <div className="circlemenu_outlines"></div>
                             {arr.map((each,i) =>
                                 <li key={i} 
                                     style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" ,clipPath: "url(#sector"+count+")"}}

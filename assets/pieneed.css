@@ -247,4 +247,6 @@
   border-radius:100%;
   pointer-events: none;
   user-select: none;
+  position:relative;
+  top:-3.5px;
 }
