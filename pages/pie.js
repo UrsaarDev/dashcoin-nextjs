@@ -23,7 +23,7 @@ class Pie extends Component {
                             </React.Fragment>
                         </Grid>
                     </Grid>
-                    {/* <Grid container item xs={12}>
+                    <Grid container item xs={12}>
                         <Grid container item xs={4}>
                             <React.Fragment>
                                 <RadialMenu count={3} direction="Right"/>
@@ -56,7 +56,7 @@ class Pie extends Component {
                                 <RadialMenu count={5} direction="Left"/>
                             </React.Fragment>
                         </Grid>
-                    </Grid> */}
+                    </Grid>
                 </>;
     }
 };
