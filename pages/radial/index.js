@@ -36,7 +36,6 @@ const Pie = (props) => {
 
     //event when you enter image
     function hovered (i) {
-        console.log(i);
         curImage.current.style.backgroundImage = `url(${backs[i%backs.length]})`;
         imgViewer.current.classList.remove('fadeOut' + direction);
         imgViewer.current.classList.add('fadeIn' + direction);
