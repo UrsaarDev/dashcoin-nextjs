@@ -15,11 +15,11 @@ const Pie = (props) => {
     const [arr, setArray] = useState([]);
     // const [backs, setBacks] = useState(['/slides/img100.jpg','/slides/img101.jpg','/slides/img102.jpg','/slides/img103.jpg','/slides/img104.jpg']);
     const [backs, setBacks] = useState([
+        'https://digitalax.mypinata.cloud/ipfs/QmchBJMkvoMymYJhMjV8YpujqGGdkvUsRFhJKK7bfXgxrD',
+        'https://digitalax.mypinata.cloud/ipfs/QmT7addsFk9Hj2LNqMv2s2m43J8Yh8xBKcjPpvHPUuYBCb',
         'https://gateway.pinata.cloud/ipfs/QmdJGUz66o8bkDFtgZCvEJABrHV8arpxrmFo8yqdHXQUoz',
         'https://gateway.pinata.cloud/ipfs/QmNjiYB2WYoQxAsYAhnSy98UVgemr2hdfzCEseUdVBhDs7',
         'https://gateway.pinata.cloud/ipfs/QmVKNA8ov3WGh9Gx16oVE42zmnJRZGRDsmN57oAfanQD4N',
-        'https://digitalax.mypinata.cloud/ipfs/QmchBJMkvoMymYJhMjV8YpujqGGdkvUsRFhJKK7bfXgxrD',
-        'https://digitalax.mypinata.cloud/ipfs/QmT7addsFk9Hj2LNqMv2s2m43J8Yh8xBKcjPpvHPUuYBCb'
     ]);
 
     //componentdidmount
@@ -67,7 +67,7 @@ const Pie = (props) => {
                             <div className="circlemenu_outlines"></div>
                             {arr.map((each,i) =>
                                 <li key={i} 
-                                    style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" ,clipPath: (count===1) ? "url(none)" : "url(#sector"+count+")"}}
+                                    style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" ,clipPath: "url(#sector"+count+")"}}
                                     onMouseEnter={() => hovered(i)}
                                     onMouseOut={(e) => hleave(1,e)}
                                 >

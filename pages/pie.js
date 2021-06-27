@@ -8,7 +8,7 @@ class Pie extends Component {
         return  <>
                     <Grid container item xs={12}>
                         <Grid container item xs={3}>
-                            <RadialMenu count={1} direction="Right"/>
+                            <RadialMenu count={4} direction="Right"/>
                         </Grid>
                         <Grid container item xs={3}>
                             <RadialMenu count={5} direction="Right"/>
@@ -17,7 +17,7 @@ class Pie extends Component {
                             <RadialMenu count={5} direction="Right"/>
                         </Grid>
                         <Grid container item xs={3}>
-                            <RadialMenu count={5} direction="Left"/>
+                            <RadialMenu count={1} direction="Left"/>
                         </Grid>
                     </Grid>
                 </>;
