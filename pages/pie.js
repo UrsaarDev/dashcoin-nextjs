@@ -7,54 +7,17 @@ class Pie extends Component {
     render() {
         return  <>
                     <Grid container item xs={12}>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={3} direction="Right"/>
-                            </React.Fragment>
+                        <Grid container item xs={3}>
+                            <RadialMenu count={5} direction="Right"/>
                         </Grid>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={5} direction="Right"/>
-                            </React.Fragment>
+                        <Grid container item xs={3}>
+                            <RadialMenu count={5} direction="Right"/>
                         </Grid>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={5} direction="Left"/>
-                            </React.Fragment>
+                        <Grid container item xs={3}>
+                            <RadialMenu count={5} direction="Right"/>
                         </Grid>
-                    </Grid>
-                    <Grid container item xs={12}>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={3} direction="Right"/>
-                            </React.Fragment>
-                        </Grid>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={5} direction="Right"/>
-                            </React.Fragment>
-                        </Grid>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={5} direction="Left"/>
-                            </React.Fragment>
-                        </Grid>
-                    </Grid>
-                    <Grid container item xs={12}>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={3} direction="Right"/>
-                            </React.Fragment>
-                        </Grid>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={5} direction="Right"/>
-                            </React.Fragment>
-                        </Grid>
-                        <Grid container item xs={4}>
-                            <React.Fragment>
-                                <RadialMenu count={5} direction="Left"/>
-                            </React.Fragment>
+                        <Grid container item xs={3}>
+                            <RadialMenu count={5} direction="Left"/>
                         </Grid>
                     </Grid>
                 </>;
