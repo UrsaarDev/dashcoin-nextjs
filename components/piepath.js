@@ -8,7 +8,9 @@ export default function PiePaths(props) {
                         {props.count !== 1 &&
                             <path fill="none" stroke="#111" d={"M0.5,0.5 L0.5,0 A0.5,0.5 0 0 1 "+endx+' '+endy+" z"}></path>
                         }
+                        {props.count === 1 &&
                             <path fill="none" stroke="#111" d="M0.5,0.5 L0.5,0 A0.5,0.5 0 1 1 0.49899999999 0 z"></path>
+                        }
                     </clipPath>
                 </defs>
             </svg>;

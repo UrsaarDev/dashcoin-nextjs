@@ -36,7 +36,8 @@ const Pie = (props) => {
 
     //event when you enter image
     function hovered (i) {
-        curImage.current.style.backgroundImage = `url(${backs[i%5]})`;
+        console.log(i);
+        curImage.current.style.backgroundImage = `url(${backs[i%backs.length]})`;
         imgViewer.current.classList.remove('fadeOut' + direction);
         imgViewer.current.classList.add('fadeIn' + direction);
         title.current.innerHTML = "This is Image "+(1+i);
@@ -73,7 +74,7 @@ const Pie = (props) => {
                                 >
                                     <img className='circlemenu_piece_img' 
                                         style={{ transform : "rotate(" + (360/arr.length) * i + "deg)" }} 
-                                        src={backs[i%5]}
+                                        src={backs[i%backs.length]}
                                     />
                                     {/* <span className='circlemenu_piespan'
                                         style={{ right : (count>6) ? 25 + count/2 + "%" : 25 + "%" , top:100/count+"%",transform:"rotate("+180/count + "deg)"}}>
