@@ -38,7 +38,7 @@ const Pie = (props) => {
 
     //event when you leave image
     function hleave (when, e) {
-        if((when === 1 && (e.relatedTarget && e.relatedTarget.classList.value.search("curImage") === -1 && e.relatedTarget.classList.value.search("imgViewer") === -1)) 
+        if((when === 1 && (e.relatedTarget && e.relatedTarget.classList.value.search("circlemenu_curImage") === -1 && e.relatedTarget.classList.value.search("circlemenu_imgViewer") === -1) && e.relatedTarget.classList.value.search("circlemenu_borders") === -1)
             || (when === 2)) {
             if(curImage.current !== null) {
                 imgViewer.current.classList.remove('fadeIn' + direction);
@@ -52,6 +52,9 @@ const Pie = (props) => {
                 <section>
                     <div className="circlemenu_container">
                         <ul className="circlemenu_ul" ref={menu}>
+                            {arr.map((each,i) =>
+                                <div className="circlemenu_borders" style={{transform:"rotate("+((360/arr.length)*i-180)+"deg)"}}></div>
+                            )}
                             {arr.map((each,i) =>
                                 <li key={i} 
                                     style={{ transform : "rotate(-" + (360/arr.length) * i + "deg)" , clipPath: "url(#sector"+count+")"}}

@@ -134,7 +134,7 @@
   width:600px;
   height:367px;
   top:0%;
-  left:50%;
+  left:48.5%;
   
   border:2px solid white;
   overflow: hidden;
@@ -183,7 +183,7 @@
   width:0;
   height:0;
   top:50%;
-  left:50%;
+  left:49%;
 }
 .circlemenu_imgViewer.fadeInLeft {
   -webkit-transition: .5s;
@@ -224,4 +224,13 @@
   width:400px;
   height:400px;
   position:absolute;
+}
+.circlemenu_borders {
+  position:absolute;
+  top:50%;
+  left:50%;
+  border-left: 6px solid white;
+  height: 500px;
+  z-index:10;
+  transform-origin: top center;
 }
